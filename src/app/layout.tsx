@@ -8,7 +8,16 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Movie Streaming",
-  description: "Streaming service for movies",
+  description:
+    "Explora las películas más populares y recientes en nuestra plataforma de streaming. Encuentra tus próximas películas favoritas.",
+  keywords: ["películas", "streaming", "cine", "populares", "estrenos"],
+  openGraph: {
+    title: "Movie Streaming",
+    description:
+      "Explora las películas más populares y recientes en nuestra plataforma de streaming. Encuentra tus próximas películas favoritas.",
+    siteName: "Movie Streaming",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

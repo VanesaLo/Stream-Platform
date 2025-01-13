@@ -1,48 +1,26 @@
-"use client";
+import MovieDetail from "@/features/detail-movie";
+import { Metadata } from "next";
 
-import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { MovieDetails } from "@/components/movie-details";
-import { fetchMovieDetails } from "@/lib/api";
-import { handleApiError } from "@/lib/error";
+export const metadata: Metadata = {
+  title: "Detalle Película | Movie Streaming",
+  description:
+    "Descubre más información sobre su género, director, actores principales y mucho más en nuestra plataforma de streaming.",
+  keywords: ["buscar películas", "streaming", "géneros", "cine"],
+  openGraph: {
+    title: "Detalle Película | Movie Streaming",
+    description:
+      "Descubre más información sobre su género, director, actores principales y mucho más en nuestra plataforma de streaming.",
+    siteName: "Movie Streaming",
+    type: "website",
+  },
+};
 
-export default function MoviePage({
+export default async function MoviePage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const [movieId, setMovieId] = useState<string | null>(null);
+  const id = (await params).id;
 
-  useEffect(() => {
-    async function resolveParams() {
-      const resolvedParams = await params;
-      setMovieId(resolvedParams.id);
-    }
-    resolveParams();
-  }, [params]);
-
-  const {
-    data: movie,
-    error,
-    isError,
-  } = useQuery({
-    queryKey: ["movie", movieId],
-    queryFn: () => (movieId ? fetchMovieDetails(movieId) : Promise.reject()),
-    enabled: !!movieId,
-  });
-
-  if (isError) {
-    return (
-      <div className="container py-8">
-        <Alert variant="destructive">
-          <AlertDescription>{handleApiError(error)}</AlertDescription>
-        </Alert>
-      </div>
-    );
-  }
-
-  if (!movie) return null;
-
-  return <MovieDetails movie={movie} />;
+  return <MovieDetail id={id} />;
 }

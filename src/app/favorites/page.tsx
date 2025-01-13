@@ -1,15 +1,20 @@
-"use client";
+import Favorites from "@/features/favorites";
+import { Metadata } from "next";
 
-import { MovieGrid } from "@/components/movie-grid";
-import { useFavorites } from "@/hooks/use-favorites";
+export const metadata: Metadata = {
+  title: "Mis Favoritos | Movie Streaming",
+  description:
+    "Guarda y gestiona tus películas favoritas para verlas cuando quieras en nuestra plataforma de streaming.",
+  keywords: ["favoritos", "películas", "streaming", "cine"],
+  openGraph: {
+    title: "Mis Favoritos | Movie Streaming",
+    description:
+      "Guarda y gestiona tus películas favoritas para verlas cuando quieras en nuestra plataforma de streaming.",
+    siteName: "Movie Streaming",
+    type: "website",
+  },
+};
 
 export default function FavoritesPage() {
-  const { favorites } = useFavorites();
-
-  return (
-    <div className="container py-8 space-y-6">
-      <h1 className="text-3xl font-bold">Favoritos</h1>
-      <MovieGrid movies={favorites} />
-    </div>
-  );
+  return <Favorites />;
 }

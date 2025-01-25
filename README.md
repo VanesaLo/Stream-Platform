@@ -46,4 +46,4 @@ Esto generará los archivos optimizados en la carpeta out. Puedes desplegarlos e
 
 ## 🌐 Contacto
 
-- Visita mi portafolio: [yeimy-lopez.dev](https://portafolio-jade-one.vercel.app/)
+- Visita mi portafolio: [yeimy-lopez](https://portafolio-jade-one.vercel.app/)
